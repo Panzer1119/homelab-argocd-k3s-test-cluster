@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: proxmox-csi-plugin
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: proxmox-csi-plugin
+    repoURL: ghcr.io/sergelogvinov/charts/proxmox-csi-plugin
+    targetRevision: 0.17.0
+    helm:
+      values: |
+        replicaCount: 1
+        existingConfigSecret: proxmox-csi-config
+        metrics:
+          enabled: true
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: csi-proxmox
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: false
+      allowEmpty: false
+      selfHeal: true
+...
