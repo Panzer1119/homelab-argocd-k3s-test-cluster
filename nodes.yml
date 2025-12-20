@@ -1,0 +1,54 @@
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: k3s-test-server-01-vm
+  labels:
+    topology.kubernetes.io/region: homelab-cluster
+    topology.kubernetes.io/zone: pve-1
+...
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: k3s-test-server-02-vm
+  labels:
+    topology.kubernetes.io/region: homelab-cluster
+    topology.kubernetes.io/zone: pve-1
+...
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: k3s-test-server-03-vm
+  labels:
+    topology.kubernetes.io/region: homelab-cluster
+    topology.kubernetes.io/zone: pve-1
+...
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: k3s-test-agent-01-vm
+  labels:
+    topology.kubernetes.io/region: homelab-cluster
+    topology.kubernetes.io/zone: pve-1
+...
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: k3s-test-agent-02-vm
+  labels:
+    topology.kubernetes.io/region: homelab-cluster
+    topology.kubernetes.io/zone: pve-1
+...
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: k3s-test-agent-03-vm
+  labels:
+    topology.kubernetes.io/region: homelab-cluster
+    topology.kubernetes.io/zone: pve-1
+...
