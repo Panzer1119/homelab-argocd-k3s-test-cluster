@@ -12,13 +12,13 @@ spec:
       volumeMounts:
         - name: persistent-storage-dynamic
           mountPath: /data/dynamic
-#        - name: persistent-storage-static
-#          mountPath: /data/static
+        - name: persistent-storage-static
+          mountPath: /data/static
   volumes:
     - name: persistent-storage-dynamic
       persistentVolumeClaim:
         claimName: test-dynamic-pvc
-#    - name: persistent-storage-static
-#      persistentVolumeClaim:
-#        claimName: test-static-pvc
+    - name: persistent-storage-static
+      persistentVolumeClaim:
+        claimName: test-static-pvc
 ...

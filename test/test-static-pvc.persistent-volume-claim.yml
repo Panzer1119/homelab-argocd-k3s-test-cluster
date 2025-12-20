@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: test-static-pvc
+  namespace: test
+  annotations:
+    csi.proxmox.sinextra.dev/lifecycle: "retain"
+    csi.proxmox.sinextra.dev/volumeName: "test-static-pv"
+spec:
+  storageClassName: proxmox-data-xfs
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+...
