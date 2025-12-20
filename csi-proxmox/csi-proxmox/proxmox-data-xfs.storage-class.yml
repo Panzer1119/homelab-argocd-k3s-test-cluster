@@ -1,0 +1,17 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: proxmox-data-xfs
+provisioner: csi.proxmox.sinextra.dev
+allowVolumeExpansion: true
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  csi.storage.k8s.io/fstype: "xfs"
+  storage: "ultra-fast-zfs"
+  cache: "none"
+  ssd: "true"
+  backup: "false"
+  replicate: "false"
+...
