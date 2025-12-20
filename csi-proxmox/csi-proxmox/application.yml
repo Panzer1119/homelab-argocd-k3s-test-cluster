@@ -8,8 +8,8 @@ spec:
   project: default
   source:
     chart: proxmox-csi-plugin
-    repoURL: ghcr.io/sergelogvinov/charts
-    targetRevision: 0.5.3
+    repoURL: ghcr.io/panzer1119/charts
+    targetRevision: 0.5.33
     helm:
       values: |
         replicaCount: 1
