@@ -2,13 +2,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: test-pvc
+  name: test-dynamic-pvc
   namespace: test
   annotations:
     csi.proxmox.sinextra.dev/lifecycle: "delete"
 spec:
   storageClassName: proxmox-data-xfs
-  volumeName: test-pv
   accessModes:
     - ReadWriteOnce
   resources:
