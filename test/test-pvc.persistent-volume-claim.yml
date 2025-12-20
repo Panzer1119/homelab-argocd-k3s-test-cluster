@@ -8,6 +8,7 @@ metadata:
     csi.proxmox.sinextra.dev/lifecycle: "delete"
 spec:
   storageClassName: proxmox-data-xfs
+  volumeName: test-pv
   accessModes:
     - ReadWriteOnce
   resources:
