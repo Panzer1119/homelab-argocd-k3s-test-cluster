@@ -6,4 +6,8 @@ metadata:
   namespace: test
 spec:
   storageClassName: proxmox-data-xfs
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 2Gi
 ...
