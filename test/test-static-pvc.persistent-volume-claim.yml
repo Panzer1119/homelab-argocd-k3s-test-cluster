@@ -6,7 +6,6 @@ metadata:
   namespace: test
   annotations:
     csi.proxmox.sinextra.dev/lifecycle: "retain"
-    csi.proxmox.sinextra.dev/volumeName: "test-static-pv"
 spec:
   storageClassName: proxmox-data-xfs
   accessModes:
