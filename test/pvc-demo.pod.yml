@@ -8,7 +8,7 @@ spec:
   containers:
     - name: thinker
       image: busybox
-      command: [ "sh", "-c", "echo 'hello from the void' >> /data/hello.txt && sleep 3600" ]
+      command: [ "sh", "-c", "echo 'hello from the void' >> /data/dynamic/hello.txt && sleep 3600" ]
       volumeMounts:
         - name: persistent-storage-dynamic
           mountPath: /data/dynamic
