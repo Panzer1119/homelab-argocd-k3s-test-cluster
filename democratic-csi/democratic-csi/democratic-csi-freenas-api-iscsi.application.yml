@@ -25,6 +25,9 @@ spec:
           driver:
             image:
               tag: "next"
+        csiProxy:
+          image:
+            tag: "v0.5.7"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: democratic-csi
