@@ -4,6 +4,7 @@
 /1password/connect/onepassword-token.secret.yml
 /1password/connect/op-credentials.secret.yml
 /csi-proxmox/csi-proxmox/config.yaml
+/democratic-csi/democratic-csi/freenas-api-iscsi/driver-config-file.yaml
 
 ### JetBrains+all template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
