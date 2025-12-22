@@ -14,17 +14,17 @@ spec:
       releaseName: freenas-api-iscsi
       values: |
         driver:
-          existingConfigSecret: democratic-csi-freenas-api-iscsi-config
+          existingConfigSecret: "democratic-csi-freenas-api-iscsi-config"
         csiDriver:
-          name: democratic-csi-freenas-api-iscsi
+          name: "org.democratic-csi.iscsi"
         controller:
           driver:
             image:
-              tag: next
+              tag: "next"
         node:
           driver:
             image:
-              tag: next
+              tag: "next"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: democratic-csi
