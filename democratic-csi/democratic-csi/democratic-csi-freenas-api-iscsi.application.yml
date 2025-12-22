@@ -30,6 +30,14 @@ spec:
         csiProxy:
           image:
             tag: "v0.5.7"
+        
+        storageClasses:
+          - name: "freenas-iscsi-csi"
+            reclaimPolicy: "Delete"
+            volumeBindingMode: "WaitForFirstConsumer"
+            allowVolumeExpansion: true
+            parameters:
+              fstype: "xfs"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: democratic-csi
