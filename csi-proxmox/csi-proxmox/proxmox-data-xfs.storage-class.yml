@@ -14,5 +14,5 @@ parameters:
   ssd: "true"
   backup: "false"
   replicate: "false"
-  volumeNamePrefix: "k8s-c1-"
+  volumeNamePrefix: "k8s-t2-"
 ...
