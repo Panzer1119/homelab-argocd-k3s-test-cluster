@@ -1,0 +1,36 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: democratic-csi-freenas-api-iscsi
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: democratic-csi
+    repoURL: https://democratic-csi.github.io/charts
+    targetRevision: 0.15.0
+    helm:
+      releaseName: freenas-api-iscsi
+      values: |
+        driver:
+          existingConfigSecret: democratic-csi-freenas-api-iscsi-config
+        controller:
+          driver:
+            image:
+              tag: next
+        node:
+          driver:
+            image:
+              tag: next
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: democratic-csi
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      allowEmpty: false
+      selfHeal: true
+...
