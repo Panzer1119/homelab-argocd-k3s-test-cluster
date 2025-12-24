@@ -3,7 +3,6 @@
 .idea/
 /1password/connect/onepassword-token.secret.yml
 /1password/connect/op-credentials.secret.yml
-/csi-proxmox/csi-proxmox/config.yaml
 /democratic-csi/democratic-csi/freenas-api-iscsi/driver-config-file.yaml
 /external-secrets/external-secrets/onepassword-token-kubernetes.secret.yml
 
