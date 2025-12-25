@@ -1,7 +1,6 @@
 ### Custom
 
 .idea/
-/democratic-csi/democratic-csi/freenas-api-iscsi/driver-config-file.yaml
 /external-secrets/external-secrets/onepassword-token-kubernetes.secret.yml
 
 ### JetBrains+all template
