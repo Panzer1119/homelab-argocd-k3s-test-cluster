@@ -42,10 +42,7 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: democratic-csi
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
     automated:
-      prune: true
-      allowEmpty: false
+      prune: false
       selfHeal: true
 ...

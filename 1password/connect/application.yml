@@ -22,10 +22,7 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: 1password
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
     automated:
-      prune: false
-      allowEmpty: false
+      prune: true
       selfHeal: true
 ...

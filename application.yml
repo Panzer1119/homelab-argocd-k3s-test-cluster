@@ -16,12 +16,9 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: default
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
     automated:
-      # Disable auto sync
+      allowEmpty: false
       enabled: true
-      # Removed deleted applications
       prune: true
       # So changes to child-apps (e.g. via the UI) do not trigger an auto sync
       selfHeal: false

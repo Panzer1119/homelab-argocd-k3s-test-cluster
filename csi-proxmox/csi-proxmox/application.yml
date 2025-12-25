@@ -20,10 +20,7 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: csi-proxmox
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
     automated:
       prune: false
-      allowEmpty: false
       selfHeal: true
 ...
