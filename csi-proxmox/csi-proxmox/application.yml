@@ -9,7 +9,7 @@ spec:
   source:
     chart: proxmox-csi-plugin
     repoURL: ghcr.io/panzer1119/charts
-    targetRevision: 0.5.35
+    targetRevision: 0.6.0
     helm:
       values: |
         replicaCount: 1

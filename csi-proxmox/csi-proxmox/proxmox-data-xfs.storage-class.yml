@@ -16,5 +16,5 @@ parameters:
   ssd: "true"
   backup: "false"
   replicate: "false"
-  volumeNamePrefix: "k8s-t2-"
+  vmid: "30002"
 ...
