@@ -18,7 +18,7 @@ spec:
   syncPolicy:
     automated:
       allowEmpty: false
-      enabled: true
+      enabled: false
       prune: true
       # So changes to child-apps (e.g. via the UI) do not trigger an auto sync
       selfHeal: false
