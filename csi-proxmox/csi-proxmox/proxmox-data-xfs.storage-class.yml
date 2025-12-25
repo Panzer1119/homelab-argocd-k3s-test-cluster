@@ -3,6 +3,8 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: proxmox-data-xfs
+  labels:
+    app.kubernetes.io/name: proxmox-csi-plugin
 provisioner: csi.proxmox.sinextra.dev
 allowVolumeExpansion: true
 reclaimPolicy: Retain
