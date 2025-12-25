@@ -1,8 +1,6 @@
 ### Custom
 
 .idea/
-/1password/connect/onepassword-token.secret.yml
-/1password/connect/op-credentials.secret.yml
 /democratic-csi/democratic-csi/freenas-api-iscsi/driver-config-file.yaml
 /external-secrets/external-secrets/onepassword-token-kubernetes.secret.yml
 
