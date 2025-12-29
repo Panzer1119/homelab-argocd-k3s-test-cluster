@@ -18,8 +18,12 @@ spec:
         ingressRoute:
           dashboard:
             enabled: true
-            entryPoints: [web, websecure]
+            entryPoints: [ traefik, websecure ]
             matchRule: Host(`traefik-dashboard.argocd-k3s-test.local.panzer1119.de`)
+          healthcheck:
+            enabled: true
+            entryPoints: [ traefik, websecure ]
+            matchRule: Host(`traefik-status.argocd-k3s-test.local.panzer1119.de`)
         ports:
           web:
             http:
