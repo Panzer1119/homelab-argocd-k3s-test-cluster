@@ -42,6 +42,7 @@ spec:
               metrics: false
               tracing: false
           websecure:
+            asDefault: true
             tls:
               enabled: true
         #        providers:
