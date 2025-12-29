@@ -14,7 +14,11 @@ spec:
       valuesObject:
         deployment:
           enabled: true
-          replicas: 2
+          replicas: 3
+        podDisruptionBudget:
+          enabled: true
+          maxUnavailable: 1
+          minAvailable: 1
         ingressRoute:
           dashboard:
             enabled: true
@@ -39,15 +43,15 @@ spec:
           websecure:
             tls:
               enabled: true
-#        providers:
-#          kubernetesCRD:
-#            enabled: true
-#            ingressClass: "traefik-external"
-#            allowCrossNamespace: true
-#          kubernetesIngress:
-#            enabled: true
-#            publishedService:
-#              enabled: false
+        #        providers:
+        #          kubernetesCRD:
+        #            enabled: true
+        #            ingressClass: "traefik-external"
+        #            allowCrossNamespace: true
+        #          kubernetesIngress:
+        #            enabled: true
+        #            publishedService:
+        #              enabled: false
         service:
           enabled: true
           spec:
