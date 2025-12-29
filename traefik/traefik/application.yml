@@ -32,6 +32,9 @@ spec:
               accessLogs: false
               metrics: false
               tracing: false
+          websecure:
+            tls:
+              enabled: true
 #        providers:
 #          kubernetesCRD:
 #            enabled: true
