@@ -15,6 +15,11 @@ spec:
         deployment:
           enabled: true
           replicas: 2
+        ingressRoute:
+          dashboard:
+            enabled: true
+            entryPoints: [web, websecure]
+            matchRule: Host(`traefik-dashboard.argocd-k3s-test.local.panzer1119.de`)
         ports:
           web:
             http:
