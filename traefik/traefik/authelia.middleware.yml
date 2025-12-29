@@ -6,7 +6,7 @@ metadata:
   namespace: traefik
 spec:
   forwardAuth:
-    address: "https://authelia.panzer1119.de/api/authz/forward-auth"
+    address: "http://192.168.6.104:9091/api/verify?rd=https%3A%2F%2Fauthelia.panzer1119.de%2F"
     trustForwardHeader: true
     authResponseHeaders:
       - Remote-User
