@@ -6,11 +6,11 @@ metadata:
   namespace: traefik
 spec:
   forwardAuth:
-    address: 'https://authelia.panzer1119.de/api/authz/forward-auth'
+    address: "https://authelia.panzer1119.de/api/authz/forward-auth"
     trustForwardHeader: true
     authResponseHeaders:
-      - 'Remote-User'
-      - 'Remote-Groups'
-      - 'Remote-Email'
-      - 'Remote-Name'
+      - Remote-User
+      - Remote-Groups
+      - Remote-Email
+      - Remote-Name
 ...
