@@ -6,8 +6,8 @@ metadata:
   namespace: traefik
 spec:
   certificates:
-#    - secretName: local-panzer1119-wildcard-tls
+    - secretName: local-panzer1119-wildcard-tls
     - secretName: local-panzer1119-wildcard-staging-tls
   defaultCertificate:
-    secretName: local-panzer1119-wildcard-staging-tls
+    secretName: local-panzer1119-wildcard-tls
 ...
