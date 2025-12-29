@@ -43,7 +43,7 @@ spec:
             http:
               redirections:
                 entryPoint:
-                  to: websecure
+                  to: :443
                   scheme: https
                   permanent: true
             observability:
