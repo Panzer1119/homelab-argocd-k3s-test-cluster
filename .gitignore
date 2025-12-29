@@ -1,6 +1,8 @@
 ### Custom
 
 .idea/
+/1password/connect/onepassword-token.secret.yml
+/1password/connect/op-credentials.secret.yml
 /external-secrets/external-secrets/onepassword-token-kubernetes.secret.yml
 
 ### JetBrains+all template
