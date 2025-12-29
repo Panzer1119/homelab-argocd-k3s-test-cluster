@@ -1,0 +1,24 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    profile: tlsserver
+    email: panzer1119@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-staging
+    solvers:
+      - dns01:
+          cloudflare:
+            email: panzer1119@gmail.com
+            apiTokenSecretRef:
+              name: cloudflare-api-token
+              key: secret
+        selector:
+          dnsZones:
+            - "panzer1119.de"
+            - "panzer1119.eu"
+...
