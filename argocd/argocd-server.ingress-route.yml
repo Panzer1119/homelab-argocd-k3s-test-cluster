@@ -17,7 +17,7 @@ spec:
         - name: argocd-server
           port: 80
     - kind: Rule
-      match: Host(`argocd.argocd-k3s-test.local.panzer1119.de`) && Headers(`Content-Type`, `application/grpc`)
+      match: Host(`argocd.argocd-k3s-test.local.panzer1119.de`) && Header(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - name: argocd-server
