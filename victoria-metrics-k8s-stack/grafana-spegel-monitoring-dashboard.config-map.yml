@@ -459,6 +459,63 @@ data:
           },
           {
             "type": "timeseries",
+            "id": 10006,
+            "title": "Advertised Content Digests per Registry",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "targets": [
+              {
+                "expr": "sum(spegel_advertised_content_digests{instance=~\"$instance\"}) by (registry)",
+                "legendFormat": "{{registry}}",
+                "refId": "A",
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${DS_PROMETHEUS}"
+                }
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 26
+            },
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single"
+              }
+            },
+            "fieldConfig": {
+              "defaults": {
+                "unit": "none",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "lineWidth": 1,
+                  "fillOpacity": 0,
+                  "lineInterpolation": "linear",
+                  "drawStyle": "line",
+                  "showPoints": "never",
+                  "gradientMode": "none"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": []
+                }
+              },
+              "overrides": []
+            }
+          },
+          {
+            "type": "timeseries",
             "id": 7,
             "title": "Advertised Keys per Registry",
             "datasource": {
