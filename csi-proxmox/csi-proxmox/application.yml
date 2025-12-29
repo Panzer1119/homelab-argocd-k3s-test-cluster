@@ -11,7 +11,7 @@ spec:
     repoURL: ghcr.io/panzer1119/charts
     targetRevision: 0.6.0
     helm:
-      values: |
+      valuesObject:
         replicaCount: 1
         existingConfigSecret: proxmox-csi-config
         metrics:
