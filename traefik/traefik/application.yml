@@ -12,6 +12,9 @@ spec:
     targetRevision: v38.0.1
     helm:
       valuesObject:
+        deployment:
+          enabled: true
+          replicas: 3
         ports:
           web:
             http:
@@ -24,6 +27,19 @@ spec:
               accessLogs: false
               metrics: false
               tracing: false
+        providers:
+          kubernetesCRD:
+            enabled: true
+            ingressClass: "traefik-external"
+            allowCrossNamespace: true
+          kubernetesIngress:
+            enabled: true
+            publishedService:
+              enabled: false
+        service:
+          enabled: true
+          spec:
+            loadBalancerIP: "192.168.7.21"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: traefik
