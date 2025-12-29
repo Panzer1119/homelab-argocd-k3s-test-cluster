@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  # Argo CD's externally facing base URL (optional). Required when configuring SSO
+  url: "https://argocd.argocd-k3s-test.local.panzer1119.de"
+  # Specifies regex expression for password
+  passwordPattern: "^.{8,128}$"
+#  # Disable the admin account
+#  admin.enabled: "false"
+#  # Create panzer1119 account with admin privileges
+#  accounts.panzer1119: "apiKey, login"
+#  accounts.panzer1119.enabled: "true"
+...
