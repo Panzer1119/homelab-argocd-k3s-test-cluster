@@ -27,10 +27,10 @@
     "automerge": false
   },
   "argocd": {
-    "managerFilePatterns": ["/\\.yaml$/"]
+    "managerFilePatterns": ["/\\.ya?ml$/"]
   },
   "kubernetes": {
-    "managerFilePatterns": ["/\\.yaml$/"]
+    "managerFilePatterns": ["/\\.ya?ml$/"]
   },
   "packageRules": [
     {
