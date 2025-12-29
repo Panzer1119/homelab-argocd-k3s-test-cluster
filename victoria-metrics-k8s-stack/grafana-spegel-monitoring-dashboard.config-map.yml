@@ -1,0 +1,680 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-spegel-monitoring-dashboard
+  namespace: victoria-metrics-k8s-stack
+  labels:
+    grafana_dashboard: "1"
+data:
+    spegel.json: |-
+      {
+        "__inputs": [
+          {
+            "name": "DS_PROMETHEUS",
+            "label": "Prometheus",
+            "description": "",
+            "type": "datasource",
+            "pluginId": "prometheus",
+            "pluginName": "Prometheus"
+          }
+        ],
+        "__requires": [
+          {
+            "type": "grafana",
+            "id": "grafana",
+            "name": "Grafana",
+            "version": "9.3.6"
+          },
+          {
+            "type": "datasource",
+            "id": "prometheus",
+            "name": "Prometheus",
+            "version": "1.0.0"
+          },
+          {
+            "type": "panel",
+            "id": "stat",
+            "name": "Stat",
+            "version": ""
+          },
+          {
+            "type": "panel",
+            "id": "timeseries",
+            "name": "Time series",
+            "version": ""
+          }
+        ],
+        "annotations": {
+          "list": [
+            {
+              "builtIn": 1,
+              "datasource": {
+                "type": "grafana",
+                "uid": "-- Grafana --"
+              },
+              "enable": true,
+              "hide": true,
+              "iconColor": "rgba(0, 211, 255, 1)",
+              "name": "Annotations & Alerts",
+              "type": "dashboard"
+            }
+          ]
+        },
+        "editable": true,
+        "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
+        "id": null,
+        "links": [],
+        "liveNow": false,
+        "panels": [
+          {
+            "type": "row",
+            "id": 100,
+            "title": "Spegel Mirror Operations",
+            "collapsed": false,
+            "gridPos": {
+              "h": 1,
+              "w": 24,
+              "x": 0,
+              "y": 0
+            },
+            "panels": []
+          },
+          {
+            "type": "timeseries",
+            "id": 2,
+            "title": "Mirror Requests Rate",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "targets": [
+              {
+                "expr": "sum(rate(spegel_mirror_requests_total{instance=~\"$instance\"}[30s])) by (cache, source)",
+                "legendFormat": "{{cache}} - {{source}}",
+                "refId": "A",
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${DS_PROMETHEUS}"
+                }
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 1
+            },
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single"
+              }
+            },
+            "fieldConfig": {
+              "defaults": {
+                "unit": "none",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "lineWidth": 1,
+                  "fillOpacity": 0,
+                  "lineInterpolation": "linear",
+                  "drawStyle": "line",
+                  "showPoints": "never",
+                  "gradientMode": "none"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": []
+                }
+              },
+              "overrides": []
+            }
+          },
+          {
+            "type": "timeseries",
+            "id": 3,
+            "title": "Spegel Resolve Duration (95th Percentile)",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "targets": [
+              {
+                "expr": "histogram_quantile(0.95, sum(rate(spegel_resolve_duration_seconds_bucket{instance=~\"$instance\"}[30s])) by (le, router, instance))",
+                "legendFormat": "{{router}} - {{instance}}",
+                "refId": "A",
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${DS_PROMETHEUS}"
+                }
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 1
+            },
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single"
+              }
+            },
+            "fieldConfig": {
+              "defaults": {
+                "unit": "s",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "lineWidth": 1,
+                  "fillOpacity": 0,
+                  "lineInterpolation": "linear",
+                  "drawStyle": "line",
+                  "showPoints": "never",
+                  "gradientMode": "none"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": []
+                }
+              },
+              "overrides": []
+            }
+          },
+          {
+            "type": "row",
+            "id": 102,
+            "title": "Advertised Metrics",
+            "collapsed": false,
+            "gridPos": {
+              "h": 1,
+              "w": 24,
+              "x": 0,
+              "y": 9
+            },
+            "panels": []
+          },
+          {
+            "type": "timeseries",
+            "id": 4,
+            "title": "Advertised Images per Registry",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "targets": [
+              {
+                "expr": "sum(spegel_advertised_images{instance=~\"$instance\"}) by (registry)",
+                "legendFormat": "{{registry}}",
+                "refId": "A",
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${DS_PROMETHEUS}"
+                }
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 10
+            },
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single"
+              }
+            },
+            "fieldConfig": {
+              "defaults": {
+                "unit": "none",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "lineWidth": 1,
+                  "fillOpacity": 0,
+                  "lineInterpolation": "linear",
+                  "drawStyle": "line",
+                  "showPoints": "never",
+                  "gradientMode": "none"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": []
+                }
+              },
+              "overrides": []
+            }
+          },
+          {
+            "type": "timeseries",
+            "id": 5,
+            "title": "Advertised Image Tags per Registry",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "targets": [
+              {
+                "expr": "sum(spegel_advertised_image_tags{instance=~\"$instance\"}) by (registry)",
+                "legendFormat": "{{registry}}",
+                "refId": "A",
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${DS_PROMETHEUS}"
+                }
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 10
+            },
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single"
+              }
+            },
+            "fieldConfig": {
+              "defaults": {
+                "unit": "none",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "lineWidth": 1,
+                  "fillOpacity": 0,
+                  "lineInterpolation": "linear",
+                  "drawStyle": "line",
+                  "showPoints": "never",
+                  "gradientMode": "none"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": []
+                }
+              },
+              "overrides": []
+            }
+          },
+          {
+            "type": "timeseries",
+            "id": 6,
+            "title": "Advertised Image Digests per Registry",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "targets": [
+              {
+                "expr": "sum(spegel_advertised_image_digests{instance=~\"$instance\"}) by (registry)",
+                "legendFormat": "{{registry}}",
+                "refId": "A",
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${DS_PROMETHEUS}"
+                }
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 18
+            },
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single"
+              }
+            },
+            "fieldConfig": {
+              "defaults": {
+                "unit": "none",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "lineWidth": 1,
+                  "fillOpacity": 0,
+                  "lineInterpolation": "linear",
+                  "drawStyle": "line",
+                  "showPoints": "never",
+                  "gradientMode": "none"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": []
+                }
+              },
+              "overrides": []
+            }
+          },
+          {
+            "type": "timeseries",
+            "id": 7,
+            "title": "Advertised Layers per Registry",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "targets": [
+              {
+                "expr": "sum(spegel_advertised_keys{instance=~\"$instance\"}) by (registry)",
+                "legendFormat": "{{registry}}",
+                "refId": "A",
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${DS_PROMETHEUS}"
+                }
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 18
+            },
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single"
+              }
+            },
+            "fieldConfig": {
+              "defaults": {
+                "unit": "none",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "lineWidth": 1,
+                  "fillOpacity": 0,
+                  "lineInterpolation": "linear",
+                  "drawStyle": "line",
+                  "showPoints": "never",
+                  "gradientMode": "none"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": []
+                }
+              },
+              "overrides": []
+            }
+          },
+          {
+            "type": "row",
+            "id": 103,
+            "title": "HTTP Metrics",
+            "collapsed": false,
+            "gridPos": {
+              "h": 1,
+              "w": 24,
+              "x": 0,
+              "y": 35
+            },
+            "panels": []
+          },
+          {
+            "type": "timeseries",
+            "id": 8,
+            "title": "Current In-flight HTTP Requests",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "targets": [
+              {
+                "expr": "sum(http_requests_inflight{instance=~\"$instance\"}) by (handler)",
+                "legendFormat": "{{handler}}",
+                "refId": "A",
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${DS_PROMETHEUS}"
+                }
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 36
+            },
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single"
+              }
+            },
+            "fieldConfig": {
+              "defaults": {
+                "unit": "none",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "lineWidth": 1,
+                  "fillOpacity": 0,
+                  "lineInterpolation": "linear",
+                  "drawStyle": "line",
+                  "showPoints": "never",
+                  "gradientMode": "none"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": []
+                }
+              },
+              "overrides": []
+            }
+          },
+          {
+            "type": "timeseries",
+            "id": 9,
+            "title": "HTTP Response Size (95th Percentile)",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "targets": [
+              {
+                "expr": "histogram_quantile(0.95, sum(rate(http_response_size_bytes_bucket{instance=~\"$instance\"}[30s])) by (le, handler, method, code))",
+                "legendFormat": "{{handler}} - {{method}} - {{code}}",
+                "refId": "A",
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${DS_PROMETHEUS}"
+                }
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 36
+            },
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single"
+              }
+            },
+            "fieldConfig": {
+              "defaults": {
+                "unit": "bytes",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "lineWidth": 1,
+                  "fillOpacity": 0,
+                  "lineInterpolation": "linear",
+                  "drawStyle": "line",
+                  "showPoints": "never",
+                  "gradientMode": "none"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": []
+                }
+              },
+              "overrides": []
+            }
+          },
+          {
+            "type": "timeseries",
+            "id": 10,
+            "title": "HTTP Request Duration (95th Percentile)",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "targets": [
+              {
+                "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{instance=~\"$instance\"}[30s])) by (le, handler, method, code))",
+                "legendFormat": "{{handler}} - {{method}} - {{code}}",
+                "refId": "A",
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${DS_PROMETHEUS}"
+                }
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 44
+            },
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single"
+              }
+            },
+            "fieldConfig": {
+              "defaults": {
+                "unit": "s",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "lineWidth": 1,
+                  "fillOpacity": 0,
+                  "lineInterpolation": "linear",
+                  "drawStyle": "line",
+                  "showPoints": "never",
+                  "gradientMode": "none"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": []
+                }
+              },
+              "overrides": []
+            }
+          }
+        ],
+        "refresh": "30s",
+        "schemaVersion": 37,
+        "style": "dark",
+        "tags": [
+          "spegel",
+          "kubernetes",
+          "monitoring"
+        ],
+        "templating": {
+          "list": [
+            {
+              "name": "DS_PROMETHEUS",
+              "label": "Prometheus",
+              "type": "datasource",
+              "query": "prometheus",
+              "current": {
+                "text": "Prometheus",
+                "value": "Prometheus"
+              }
+            },
+            {
+              "name": "instance",
+              "label": "Instance",
+              "type": "query",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "includeAll": true,
+              "multi": true,
+              "refresh": 2,
+              "query": {
+                "query": "label_values(spegel_advertised_keys, instance)",
+                "refId": "StandardVariableQuery"
+              },
+              "current": {
+                "selected": false,
+                "text": "All",
+                "value": "$__all"
+              }
+            }
+          ]
+        },
+        "time": {
+          "from": "now-6h",
+          "to": "now"
+        },
+        "timepicker": {},
+        "timezone": "",
+        "title": "Spegel Monitoring Dashboard",
+        "uid": "spegel-monitoring-dashboard",
+        "version": 1,
+        "weekStart": "",
+        "description": "A comprehensive Grafana dashboard for monitoring Spegel, focusing on Spegel-specific metrics such as mirror requests, resolve durations, advertised images, and HTTP metrics.",
+        "gnetId": 22104
+      }
+...
