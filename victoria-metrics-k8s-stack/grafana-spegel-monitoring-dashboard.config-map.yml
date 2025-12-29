@@ -287,8 +287,8 @@ data:
             "gridPos": {
               "h": 8,
               "w": 12,
-              "x": 12,
-              "y": 10
+              "x": 0,
+              "y": 18
             },
             "options": {
               "legend": {
@@ -345,7 +345,7 @@ data:
               "h": 8,
               "w": 12,
               "x": 0,
-              "y": 18
+              "y": 26
             },
             "options": {
               "legend": {
@@ -382,7 +382,7 @@ data:
           {
             "type": "timeseries",
             "id": 7,
-            "title": "Advertised Layers per Registry",
+            "title": "Advertised Keys per Registry",
             "datasource": {
               "type": "prometheus",
               "uid": "${DS_PROMETHEUS}"
@@ -403,6 +403,63 @@ data:
               "w": 12,
               "x": 12,
               "y": 18
+            },
+            "options": {
+              "legend": {
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single"
+              }
+            },
+            "fieldConfig": {
+              "defaults": {
+                "unit": "none",
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "lineWidth": 1,
+                  "fillOpacity": 0,
+                  "lineInterpolation": "linear",
+                  "drawStyle": "line",
+                  "showPoints": "never",
+                  "gradientMode": "none"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": []
+                }
+              },
+              "overrides": []
+            }
+          },
+          {
+            "type": "timeseries",
+            "id": 1108,
+            "title": "Advertised Layers per Registry",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "targets": [
+              {
+                "expr": "sum(spegel_advertised_keys{instance=~\"$instance\"}) by (registry) - (sum(spegel_advertised_images{instance=~\"$instance\"}) by (registry) or on (registry) vector(0))",
+                "legendFormat": "{{registry}}",
+                "refId": "A",
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${DS_PROMETHEUS}"
+                }
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 10
             },
             "options": {
               "legend": {
