@@ -23,14 +23,14 @@ spec:
         ingressRoute:
           dashboard:
             enabled: true
-            entryPoints: [ traefik, web, websecure ]
+            entryPoints: [ websecure ]
             matchRule: Host(`traefik-dashboard.argocd-k3s-test.local.panzer1119.de`) && (Path(`/`) || PathPrefix(`/api`) || PathPrefix(`/dashboard`))
             middlewares:
               - name: authelia
                 namespace: traefik
           healthcheck:
             enabled: true
-            entryPoints: [ traefik, web, websecure ]
+            entryPoints: [ websecure ]
             matchRule: Host(`traefik-status.argocd-k3s-test.local.panzer1119.de`)
         ports:
           web:
