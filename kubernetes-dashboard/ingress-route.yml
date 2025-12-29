@@ -1,0 +1,20 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kubernetes-dashboard
+  namespace: kubernetes-dashboard
+  annotations:
+    link.argocd.argoproj.io/external-link: "https://kubernetes-dashboard.argocd-k3s-test.local.panzer1119.de"
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`kubernetes-dashboard.argocd-k3s-test.local.panzer1119.de`)
+      services:
+        - name: kubernetes-dashboard-kong-proxy
+          port: 443
+          scheme: https
+          serversTransport: dashboard-insecure-transport
+...
