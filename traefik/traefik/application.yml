@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: traefik
   namespace: argocd
+  annotations:
+    link.argocd.argoproj.io/external-link: "https://traefik-dashboard.argocd-k3s-test.local.panzer1119.de"
 spec:
   project: default
   source:
