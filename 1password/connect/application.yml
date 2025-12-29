@@ -17,8 +17,6 @@ spec:
           replicas: 1
           ingress:
             enabled: true
-            hosts:
-              - host: 1password-connect.argocd-k3s-test.local.panzer1119.de
         operator:
           create: true
           replicas: 1
