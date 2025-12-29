@@ -11,7 +11,7 @@ spec:
     repoURL: https://1password.github.io/connect-helm-charts
     targetRevision: 2.1.1
     helm:
-      values: |
+      valuesObject:
         connect:
           create: true
           replicas: 1
