@@ -1,0 +1,13 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: TLSStore
+metadata:
+  name: default
+  namespace: traefik
+spec:
+  certificates:
+#    - secretName: local-panzer1119-wildcard-tls
+    - secretName: local-panzer1119-wildcard-staging-tls
+  defaultCertificate:
+    secretName: local-panzer1119-wildcard-staging-tls
+...
