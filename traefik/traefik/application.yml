@@ -24,7 +24,7 @@ spec:
           dashboard:
             enabled: true
             entryPoints: [ traefik, web, websecure ]
-            matchRule: Host(`traefik-dashboard.argocd-k3s-test.local.panzer1119.de`)
+            matchRule: Host(`traefik-dashboard.argocd-k3s-test.local.panzer1119.de`) && (Path(`/`) || PathPrefix(`/api`) || PathPrefix(`/dashboard`))
             middlewares:
               - name: authelia
                 namespace: traefik
