@@ -1,0 +1,16 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: local-panzer1119-eu-wildcard-staging
+  namespace: traefik
+spec:
+  secretName: local-panzer1119-eu-wildcard-staging-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-staging
+  dnsNames:
+    - "local.panzer1119.eu"
+    - "*.local.panzer1119.eu"
+    - "*.argocd-k3s-test.local.panzer1119.eu"
+...
