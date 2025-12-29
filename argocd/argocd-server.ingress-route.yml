@@ -1,0 +1,26 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argocd-server
+  namespace: argocd
+  annotations:
+    link.argocd.argoproj.io/external-link: "https://argocd.argocd-k3s-test.local.panzer1119.de"
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`argocd.argocd-k3s-test.local.panzer1119.de`)
+      priority: 10
+      services:
+        - name: argocd-server
+          port: 80
+    - kind: Rule
+      match: Host(`argocd.argocd-k3s-test.local.panzer1119.de`) && Headers(`Content-Type`, `application/grpc`)
+      priority: 11
+      services:
+        - name: argocd-server
+          port: 80
+          scheme: h2c
+...
