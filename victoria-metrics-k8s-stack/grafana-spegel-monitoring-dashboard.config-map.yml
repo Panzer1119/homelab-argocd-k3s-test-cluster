@@ -82,6 +82,84 @@ data:
             "panels": []
           },
           {
+            "type": "stat",
+            "id": 10001,
+            "title": "Mirror Last Success",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${DS_PROMETHEUS}"
+            },
+            "targets": [
+              {
+                "expr": "max by (instance) (time() - spegel_mirror_last_success_timestamp_seconds{job=\"kubelet\"})",
+                "legendFormat": "__auto",
+                "refId": "A",
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "${DS_PROMETHEUS}"
+                }
+              }
+            ],
+            "gridPos": {
+              "h": 5,
+              "w": 24,
+              "x": 0,
+              "y": 1
+            },
+            "options": {
+              "colorMode": "value",
+              "graphMode": "none",
+              "justifyMode": "center",
+              "orientation": "auto",
+              "percentChangeColorMode": "standard",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showPercentChange": false,
+              "textMode": "auto",
+              "wideLayout": true,
+              "tooltip": {
+                "mode": "single"
+              }
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "fieldMinMax": false,
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "yellow",
+                      "value": 10800
+                    },
+                    {
+                      "color": "orange",
+                      "value": 86400
+                    },
+                    {
+                      "color": "red",
+                      "value": 604800
+                    }
+                  ]
+                },
+                "unit": "s"
+              },
+              "overrides": []
+            }
+          },
+          {
             "type": "timeseries",
             "id": 2,
             "title": "Mirror Requests Rate",
