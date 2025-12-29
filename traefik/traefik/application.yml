@@ -26,7 +26,7 @@ spec:
             entryPoints: [ traefik, websecure ]
             matchRule: Host(`traefik-dashboard.argocd-k3s-test.local.panzer1119.de`)
             middlewares:
-              - name: authentik
+              - name: authelia
                 namespace: traefik
           healthcheck:
             enabled: true
