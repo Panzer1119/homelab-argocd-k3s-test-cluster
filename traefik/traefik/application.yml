@@ -48,15 +48,11 @@ spec:
             asDefault: true
             tls:
               enabled: true
-        #        providers:
-        #          kubernetesCRD:
-        #            enabled: true
-        #            ingressClass: "traefik-external"
-        #            allowCrossNamespace: true
-        #          kubernetesIngress:
-        #            enabled: true
-        #            publishedService:
-        #              enabled: false
+        providers:
+          kubernetesCRD:
+            enabled: true
+            #ingressClass: "traefik-external"
+            allowCrossNamespace: true
         service:
           enabled: true
           spec:
