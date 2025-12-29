@@ -729,7 +729,7 @@ data:
         "timezone": "",
         "title": "Spegel Monitoring Dashboard",
         "uid": "spegel-monitoring-dashboard",
-        "version": 1,
+        "version": 2,
         "weekStart": "",
         "description": "A comprehensive Grafana dashboard for monitoring Spegel, focusing on Spegel-specific metrics such as mirror requests, resolve durations, advertised images, and HTTP metrics.",
         "gnetId": 22104
