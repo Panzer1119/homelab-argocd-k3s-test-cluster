@@ -18,7 +18,6 @@ spec:
         replicaCount: 3
         podDisruptionBudget:
           enabled: true
-          maxUnavailable: 1
           minAvailable: 1
         namespace: cert-manager
         dns01RecursiveNameservers: "1.1.1.1:53,8.8.8.8:53"
