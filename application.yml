@@ -16,6 +16,8 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: default
   syncPolicy:
+    syncOptions:
+      - SkipDryRunOnMissingResource=true
     automated:
       allowEmpty: false
       enabled: false
