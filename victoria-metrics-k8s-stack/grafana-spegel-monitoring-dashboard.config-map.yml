@@ -290,6 +290,7 @@ data:
             "type": "timeseries",
             "id": 4,
             "title": "Advertised Images per Registry",
+            "description": "Removed in v0.6.0",
             "datasource": {
               "type": "prometheus",
               "uid": "${DS_PROMETHEUS}"
@@ -461,6 +462,7 @@ data:
             "type": "timeseries",
             "id": 10006,
             "title": "Advertised Content Digests per Registry",
+            "description": "Added in v0.6.0",
             "datasource": {
               "type": "prometheus",
               "uid": "${DS_PROMETHEUS}"
@@ -518,6 +520,7 @@ data:
             "type": "timeseries",
             "id": 7,
             "title": "Advertised Keys per Registry",
+            "description": "Removed in v0.6.0",
             "datasource": {
               "type": "prometheus",
               "uid": "${DS_PROMETHEUS}"
@@ -575,6 +578,7 @@ data:
             "type": "timeseries",
             "id": 1108,
             "title": "Advertised Layers per Registry",
+            "description": "Removed in v0.6.0",
             "datasource": {
               "type": "prometheus",
               "uid": "${DS_PROMETHEUS}"
