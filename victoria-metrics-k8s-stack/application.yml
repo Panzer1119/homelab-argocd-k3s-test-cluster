@@ -14,8 +14,32 @@ spec:
     targetRevision: 0.66.1
     helm:
       valuesObject:
+        alertmanager:
+          ingress:
+            enabled: true
+            hosts:
+              - vm-alertmanager.argocd-k3s-test.local.panzer1119.de
+            ingressClassName: traefik
+        grafana:
+          ingress:
+            enabled: true
+            hosts:
+              - vm-grafana.argocd-k3s-test.local.panzer1119.de
+            ingressClassName: traefik
         victoria-metrics-operator:
           enabled: false
+        vmagent:
+          ingress:
+            enabled: true
+            hosts:
+              - vm-agent.argocd-k3s-test.local.panzer1119.de
+            ingressClassName: traefik
+        vmalert:
+          ingress:
+            enabled: true
+            hosts:
+              - vm-alert.argocd-k3s-test.local.panzer1119.de
+            ingressClassName: traefik
         vmsingle:
           ingress:
             enabled: true
