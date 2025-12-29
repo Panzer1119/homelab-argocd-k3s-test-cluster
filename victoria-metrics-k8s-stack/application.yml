@@ -1,0 +1,42 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: victoria-metrics-k8s-stack
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://victoriametrics.github.io/helm-charts
+    chart: victoria-metrics-k8s-stack
+    targetRevision: 0.66.1
+    helm:
+      valuesObject:
+        victoria-metrics-operator:
+          enabled: false
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: victoria-metrics-k8s-stack
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      # https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#respect-ignore-difference-configs
+      # argocd must also ignore difference during apply stage
+      # otherwise it ll silently override changes and cause a problem
+      - RespectIgnoreDifferences=true
+    automated:
+      prune: true
+      selfHeal: true
+  ignoreDifferences:
+    - kind: Secret
+      name: vm-operator-validation
+      namespace: victoria-metrics-k8s-stack
+      jsonPointers:
+        - /data
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+      name: vm-operator-admission
+      jqPathExpressions:
+        - '.webhooks[]?.clientConfig.caBundle'
+...
