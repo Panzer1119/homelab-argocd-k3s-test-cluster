@@ -14,7 +14,7 @@ spec:
       valuesObject:
         deployment:
           enabled: true
-          replicas: 3
+          replicas: 2
         ports:
           web:
             http:
@@ -27,15 +27,15 @@ spec:
               accessLogs: false
               metrics: false
               tracing: false
-        providers:
-          kubernetesCRD:
-            enabled: true
-            ingressClass: "traefik-external"
-            allowCrossNamespace: true
-          kubernetesIngress:
-            enabled: true
-            publishedService:
-              enabled: false
+#        providers:
+#          kubernetesCRD:
+#            enabled: true
+#            ingressClass: "traefik-external"
+#            allowCrossNamespace: true
+#          kubernetesIngress:
+#            enabled: true
+#            publishedService:
+#              enabled: false
         service:
           enabled: true
           spec:
