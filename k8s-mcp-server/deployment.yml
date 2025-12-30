@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-mcp-server
+  namespace: k8s-mcp-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-mcp-server
+  template:
+    metadata:
+      labels:
+        app: k8s-mcp-server
+    spec:
+      serviceAccountName: k8s-mcp-server
+      containers:
+        - name: k8s-mcp-server
+          image: ginnux/k8s-mcp-server:latest
+          command:
+            - "/usr/local/bin/k8s-mcp-server"
+            - "--read-only"
+            - "--no-helm"
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SERVER_MODE
+              value: "streamable-http"
+            - name: SERVER_PORT
+              value: "8080"
+...
