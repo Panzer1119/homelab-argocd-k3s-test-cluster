@@ -3,7 +3,7 @@ apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: whoami
-  namespace: traefik
+  namespace: whoami
 spec:
   minAvailable: 1
   unhealthyPodEvictionPolicy: AlwaysAllow

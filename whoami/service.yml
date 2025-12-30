@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: whoami
-  namespace: traefik
+  namespace: whoami
 spec:
   selector:
     app: whoami
