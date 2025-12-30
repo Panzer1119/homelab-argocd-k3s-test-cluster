@@ -40,6 +40,8 @@ spec:
         global:
           checkNewVersion: true
           sendAnonymousUsage: false
+        additionalArguments:
+          - "--serversTransport.insecureSkipVerify=true"
         ports:
           web:
             asDefault: false
