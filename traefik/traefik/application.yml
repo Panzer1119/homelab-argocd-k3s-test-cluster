@@ -37,6 +37,9 @@ spec:
             middlewares:
               - name: redirect-to-https
                 namespace: traefik
+        global:
+          checkNewVersion: true
+          sendAnonymousUsage: false
         ports:
           web:
             asDefault: false
