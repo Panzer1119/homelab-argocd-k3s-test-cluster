@@ -15,7 +15,7 @@ spec:
         app: whoami
     spec:
       affinity:
-        podAffinity:
+        podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
             - weight: 100
               podAffinityTerm:
