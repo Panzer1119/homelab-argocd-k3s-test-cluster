@@ -23,4 +23,12 @@ spec:
             readOnlyRootFilesystem: true
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              cpu: "1m"
+              memory: "1Mi"
+            limits:
+              cpu: "100m"
+              memory: "100Mi"
+
 ...
