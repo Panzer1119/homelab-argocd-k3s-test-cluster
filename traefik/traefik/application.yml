@@ -42,6 +42,7 @@ spec:
           sendAnonymousUsage: false
         additionalArguments:
           - "--serversTransport.insecureSkipVerify=true"
+          - "--log.level=DEBUG"
         ports:
           web:
             asDefault: false
