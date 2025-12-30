@@ -14,6 +14,15 @@ spec:
       labels:
         app: whoami
     spec:
+      affinity:
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: whoami
+                topologyKey: kubernetes.io/hostname
       containers:
         - name: whoami
           image: ghcr.io/traefik/whoami:v1.11.0
