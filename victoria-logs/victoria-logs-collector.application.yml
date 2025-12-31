@@ -1,0 +1,34 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: victoria-logs-collector
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://victoriametrics.github.io/helm-charts/
+    chart: victoria-logs-collector
+    targetRevision: 0.2.4
+    helm:
+      valuesObject:
+        remoteWrite:
+            #TODO is this url correct?
+          - url: http://victoria-logs-single-victoria-logs-single-server:9428
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: victoria-logs
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+...

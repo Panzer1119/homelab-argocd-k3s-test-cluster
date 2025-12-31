@@ -1,0 +1,36 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: victoria-logs-single
+  namespace: argocd
+  annotations:
+    link.argocd.argoproj.io/external-link: "https://victoria-logs.argocd-k3s-test.local.panzer1119.de"
+spec:
+  project: default
+  source:
+    repoURL: https://victoriametrics.github.io/helm-charts/
+    chart: victoria-logs-single
+    targetRevision: 0.11.23
+    helm:
+      valuesObject:
+        server:
+          #TODO replicas, poddisuptionbudget (etc?)
+          retentionPeriod: 30d
+          persistentVolume:
+            size: 20Gi
+          ingress:
+            enabled: true
+            hosts:
+              - vm-logs.argocd-k3s-test.local.panzer1119.de
+            ingressClassName: traefik
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: victoria-logs
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+...
