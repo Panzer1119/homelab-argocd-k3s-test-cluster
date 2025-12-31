@@ -22,7 +22,10 @@ spec:
           ingress:
             enabled: true
             hosts:
-              - vm-logs.argocd-k3s-test.local.panzer1119.de
+              - name: vm-logs.argocd-k3s-test.local.panzer1119.de
+                path: 
+                  - /
+                port: http 
             ingressClassName: traefik
   destination:
     server: "https://kubernetes.default.svc"
