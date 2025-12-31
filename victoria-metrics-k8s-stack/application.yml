@@ -21,6 +21,9 @@ spec:
               - vm-alertmanager.argocd-k3s-test.local.panzer1119.de
             ingressClassName: traefik
         grafana:
+          plugins:
+            - victoriametrics-metrics-datasource
+            - victoriametrics-logs-datasource
           ingress:
             enabled: true
             hosts:
