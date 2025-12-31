@@ -27,7 +27,8 @@ spec:
                   - /
                 port: http 
             ingressClassName: traefik
-            #annotations: "traefik.ingress.kubernetes.io/router.middlewares: traefik-authelia@kubernetescrd"
+            annotations:
+              traefik.ingress.kubernetes.io/router.middlewares: traefik-authelia@kubernetescrd
   destination:
     server: "https://kubernetes.default.svc"
     namespace: victoria-logs
