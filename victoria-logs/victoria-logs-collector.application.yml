@@ -13,8 +13,7 @@ spec:
     helm:
       valuesObject:
         remoteWrite:
-            #TODO is this url correct?
-          - url: http://victoria-logs-single-victoria-logs-single-server:9428
+          - url: http://victoria-logs-single-server.victoria-logs.svc.cluster.local:9428
         resources:
           limits:
             cpu: 100m
