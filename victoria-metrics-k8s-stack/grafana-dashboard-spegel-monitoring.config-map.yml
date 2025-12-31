@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-spegel-monitoring-dashboard
+  name: grafana-dashboard-spegel-monitoring
   namespace: victoria-metrics-k8s-stack
   labels:
     grafana_dashboard: "1"
