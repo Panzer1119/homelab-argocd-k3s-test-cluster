@@ -1,0 +1,15 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: nautik-viewer
+subjects:
+  - kind: ServiceAccount
+    name: nautik-viewer
+    namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: view
+...
+ 
