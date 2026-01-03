@@ -41,6 +41,17 @@ spec:
             extraArgs:
               promscrape.dropOriginalLabels: "false"
             selectAllByDefault: true
+            inlineScrapeConfig: |
+              - job_name: traefik
+                kubernetes_sd_configs:
+                  - role: endpoints
+                relabel_configs:
+                  - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_name]
+                    action: keep
+                    regex: traefik
+                  - source_labels: [__meta_kubernetes_endpoint_port_name]
+                    action: keep
+                    regex: metrics
         vmalert:
           ingress:
             enabled: true
