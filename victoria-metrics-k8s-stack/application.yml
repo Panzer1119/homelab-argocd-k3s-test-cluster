@@ -37,6 +37,10 @@ spec:
             hosts:
               - vm-agent.argocd-k3s-test.local.panzer1119.de
             ingressClassName: traefik
+          spec:
+            extraArgs:
+              promscrape.dropOriginalLabels: "false"
+            selectAllByDefault: true
         vmalert:
           ingress:
             enabled: true
