@@ -20,6 +20,8 @@ spec:
             hosts:
               - vm-alertmanager.argocd-k3s-test.local.panzer1119.de
             ingressClassName: traefik
+            annotations:
+              traefik.ingress.kubernetes.io/router.middlewares: traefik-authelia@kubernetescrd
         grafana:
           plugins:
             - victoriametrics-metrics-datasource
@@ -29,6 +31,8 @@ spec:
             hosts:
               - vm-grafana.argocd-k3s-test.local.panzer1119.de
             ingressClassName: traefik
+            annotations:
+              traefik.ingress.kubernetes.io/router.middlewares: traefik-authelia@kubernetescrd
         victoria-metrics-operator:
           enabled: false
         vmagent:
@@ -37,6 +41,8 @@ spec:
             hosts:
               - vm-agent.argocd-k3s-test.local.panzer1119.de
             ingressClassName: traefik
+            annotations:
+              traefik.ingress.kubernetes.io/router.middlewares: traefik-authelia@kubernetescrd
           spec:
             extraArgs:
               promscrape.dropOriginalLabels: "false"
@@ -61,12 +67,16 @@ spec:
             hosts:
               - vm-alert.argocd-k3s-test.local.panzer1119.de
             ingressClassName: traefik
+            annotations:
+              traefik.ingress.kubernetes.io/router.middlewares: traefik-authelia@kubernetescrd
         vmsingle:
           ingress:
             enabled: true
             hosts:
               - victoria-metrics.argocd-k3s-test.local.panzer1119.de
             ingressClassName: traefik
+            annotations:
+              traefik.ingress.kubernetes.io/router.middlewares: traefik-authelia@kubernetescrd
   destination:
     server: "https://kubernetes.default.svc"
     namespace: victoria-metrics-k8s-stack
