@@ -37,6 +37,8 @@ spec:
             allowVolumeExpansion: true
             parameters:
               fstype: "xfs"
+              csi.storage.k8s.io/node-stage-secret-name: freenas-api-iscsi-freenas-iscsi-csi-node-stage
+              csi.storage.k8s.io/node-stage-secret-namespace: democratic-csi
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: democratic-csi
