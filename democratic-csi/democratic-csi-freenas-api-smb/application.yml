@@ -1,0 +1,55 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: democratic-csi-freenas-api-smb
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: democratic-csi
+    repoURL: https://democratic-csi.github.io/charts
+    targetRevision: 0.15.0
+    helm:
+      releaseName: freenas-api-smb
+      valuesObject:
+        driver:
+          existingConfigSecret: "democratic-csi-freenas-api-smb-config"
+          config:
+            driver: "freenas-api-smb"
+        csiDriver:
+          name: "org.democratic-csi.smb"
+          fsGroupPolicy: "File"
+        controller:
+          driver:
+            image:
+              tag: "next"
+        node:
+          driver:
+            image:
+              tag: "next"
+        csiProxy:
+          image:
+            tag: "v0.5.7"
+        storageClasses:
+          - name: "freenas-smb-csi"
+            reclaimPolicy: "Delete"
+            volumeBindingMode: "WaitForFirstConsumer"
+            allowVolumeExpansion: true
+            parameters:
+              fstype: "cifs"
+  #            mountOptions:
+  #              - "dir_mode=0777"
+  #              - "file_mode=0777"
+  #              - "vers=3.0"
+            secrets:
+              provisioner-secret:
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: democratic-csi
+  syncPolicy:
+    automated:
+      enabled: false
+      prune: false
+      selfHeal: true
+...
