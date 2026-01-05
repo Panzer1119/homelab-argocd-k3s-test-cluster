@@ -14,7 +14,7 @@ spec:
       releaseName: freenas-api-smb
       valuesObject:
         driver:
-          existingConfigSecret: "democratic-csi-freenas-api-smb-config"
+          existingConfigSecret: "freenas-api-smb-config"
           config:
             driver: "freenas-api-smb"
         csiDriver:
