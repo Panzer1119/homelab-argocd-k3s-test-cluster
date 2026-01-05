@@ -39,10 +39,10 @@ spec:
             allowVolumeExpansion: true
             parameters:
               fstype: "cifs"
-  #            mountOptions:
+              mountOptions:
+                - "vers=3.0"
   #              - "dir_mode=0777"
   #              - "file_mode=0777"
-  #              - "vers=3.0"
               csi.storage.k8s.io/provisioner-secret-name: freenas-api-smb-freenas-smb-csi-provisioner
               csi.storage.k8s.io/provisioner-secret-namespace: democratic-csi
   destination:
