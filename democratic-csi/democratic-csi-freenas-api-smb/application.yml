@@ -41,8 +41,8 @@ spec:
               fstype: "cifs"
               mountOptions:
                 - "vers=3.0"
-  #              - "dir_mode=0777"
-  #              - "file_mode=0777"
+                - "dir_mode=0777"
+                - "file_mode=0777"
               csi.storage.k8s.io/node-stage-secret-name: freenas-api-smb-freenas-smb-csi-node-stage
               csi.storage.k8s.io/node-stage-secret-namespace: democratic-csi
   destination:
