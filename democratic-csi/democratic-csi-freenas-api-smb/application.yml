@@ -42,8 +42,8 @@ spec:
   #              - "dir_mode=0777"
   #              - "file_mode=0777"
   #              - "vers=3.0"
-            secrets:
-              provisioner-secret:
+              csi.storage.k8s.io/provisioner-secret-name: freenas-api-smb-freenas-smb-csi-provisioner
+              csi.storage.k8s.io/provisioner-secret-namespace: democratic-csi
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: democratic-csi
