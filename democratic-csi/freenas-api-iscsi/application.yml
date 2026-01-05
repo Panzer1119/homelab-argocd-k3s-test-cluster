@@ -44,6 +44,7 @@ spec:
     namespace: democratic-csi
   syncPolicy:
     automated:
+      enabled: false
       prune: false
       selfHeal: true
 ...
