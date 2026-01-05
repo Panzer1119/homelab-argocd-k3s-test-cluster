@@ -14,7 +14,7 @@ spec:
       releaseName: freenas-api-iscsi
       valuesObject:
         driver:
-          existingConfigSecret: "democratic-csi-freenas-api-iscsi-config"
+          existingConfigSecret: "freenas-api-iscsi-config"
           config:
             driver: "freenas-api-iscsi"
         csiDriver:
