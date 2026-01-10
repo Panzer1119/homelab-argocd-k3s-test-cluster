@@ -21,6 +21,7 @@ spec:
     namespace: csi-proxmox
   syncPolicy:
     automated:
-      prune: false
+      enabled: false
+      prune: true
       selfHeal: true
 ...
