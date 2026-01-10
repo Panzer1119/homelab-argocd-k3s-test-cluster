@@ -25,10 +25,14 @@
     "renovate"
   ],
   "argocd": {
-    "managerFilePatterns": ["/\\.ya?ml$/"]
+    "managerFilePatterns": [
+      "/\\.ya?ml$/"
+    ]
   },
   "kubernetes": {
-    "managerFilePatterns": ["/\\.ya?ml$/"]
+    "managerFilePatterns": [
+      "/\\.ya?ml$/"
+    ]
   },
   "packageRules": [
     {
