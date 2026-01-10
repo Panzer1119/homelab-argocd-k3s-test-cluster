@@ -33,17 +33,13 @@
   "packageRules": [
     {
       "description": "Parse version tags of linuxserver.io images",
-      "matchManagers": [
-          "docker-compose",
-          "dockerfile"
+      "matchDatasources": [
+        "docker"
       ],
-      "versioning": "regex:^version-v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$",
       "matchPackageNames": [
-          "/^(ghcr|lscr).io\\/linuxserver\\/.*$/",
-          "!ghcr.io/linuxserver/prowlarr",
-          "!ghcr.io/linuxserver/radarr",
-          "!ghcr.io/linuxserver/sonarr"
-      ]
+        "/^(ghcr|lscr).io\\/linuxserver\\/.*$/"
+      ],
+      "versioning": "regex:^(?:version-)?v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<build>\\d+))?(?:-ls(?<revision>.+))?$"
     }
   ],
   "stopUpdatingLabel": "renovate/stop_updating"
