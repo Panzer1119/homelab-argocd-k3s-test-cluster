@@ -2,30 +2,28 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:best-practices",
-    ":automergeAll",
+    ":approveMajorUpdates",
     ":automergeBranch",
     ":automergeDigest",
+    ":automergeLinters",
     ":automergePatch",
-    ":dependencyDashboard",
+    ":automergeTesters",
     ":enableVulnerabilityAlertsWithLabel('security')",
+    ":gitSignOff",
+    ":ignoreUnstable",
     ":preserveSemverRanges",
     ":rebaseStalePrs",
+    ":semanticPrefixChore",
     ":separateMultipleMajorReleases",
     ":skipStatusChecks",
     ":timezone(Europe/Berlin)",
-    "group:recommended",
+    "customManagers:dockerfileVersions",
+    "customManagers:githubActionsVersions",
     "schedule:daily"
   ],
   "labels": [
     "renovate"
   ],
-  "major": {
-    "dependencyDashboardApproval": true,
-    "automerge": false
-  },
-  "minor": {
-    "automerge": false
-  },
   "argocd": {
     "managerFilePatterns": ["/\\.ya?ml$/"]
   },
@@ -142,6 +140,5 @@
       ]
     }
   ],
-  "separateMinorPatch": true,
   "stopUpdatingLabel": "renovate/stop_updating"
 }
