@@ -17,8 +17,6 @@ spec:
         ingress:
           enabled: true
           className: traefik
-          annotations:
-            traefik.ingress.kubernetes.io/router.middlewares: traefik-authelia@kubernetescrd
           hosts:
             - host: prowlarr.argocd-k3s-test.local.panzer1119.de
               paths:
