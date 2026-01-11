@@ -11,7 +11,7 @@ spec:
   source:
     chart: prowlarr
     repoURL: https://panzer1119.github.io/helm-charts
-    targetRevision: 0.4.14
+    targetRevision: 0.4.15
     helm:
       valuesObject:
         ingress:
@@ -24,6 +24,16 @@ spec:
               paths:
                 - path: /
                   pathType: ImplementationSpecific
+        syncApiKey:
+          enabled: true
+          pushSecret:
+            enabled: true
+            secretStoreRefs:
+              - kind: ClusterSecretStore
+                name: 1password-connect
+            remoteRef:
+              remoteKey: "homelab-argocd-k3s-test-cluster - Prowlarr"
+              property: "API Key"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: prowlarr
