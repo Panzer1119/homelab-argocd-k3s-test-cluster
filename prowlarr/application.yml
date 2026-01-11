@@ -30,8 +30,15 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
+      - RespectIgnoreDifferences=true
     automated:
       enabled: false
       prune: true
       selfHeal: true
+  ignoreDifferences:
+    - kind: Secret
+      name: prowlarr-apikey
+      namespace: prowlarr
+      jsonPointers:
+        - /data
 ...
