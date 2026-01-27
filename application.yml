@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Panzer1119/homelab-argocd-k3s-test-cluster.git
-    targetRevision: HEAD
+    targetRevision: macbook
     path: .
     directory:
       recurse: true
