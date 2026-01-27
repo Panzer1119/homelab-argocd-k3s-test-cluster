@@ -5,13 +5,13 @@ metadata:
   name: argocd-server
   namespace: argocd
   annotations:
-    link.argocd.argoproj.io/external-link: "https://argocd.argocd-k3s-test.panzer1119.de"
+    link.argocd.argoproj.io/external-link: "https://argocd.argocd-mbp-test.panzer1119.de"
 spec:
   entryPoints:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`argocd.argocd-k3s-test.panzer1119.de`)
+      match: Host(`argocd.argocd-mbp-test.panzer1119.de`)
       middlewares:
         - name: redirect-to-https
           namespace: traefik
@@ -22,7 +22,7 @@ spec:
         - name: argocd-server
           port: 80
     - kind: Rule
-      match: Host(`argocd.argocd-k3s-test.panzer1119.de`) && Header(`Content-Type`, `application/grpc`)
+      match: Host(`argocd.argocd-mbp-test.panzer1119.de`) && Header(`Content-Type`, `application/grpc`)
       middlewares:
         - name: redirect-to-https
           namespace: traefik

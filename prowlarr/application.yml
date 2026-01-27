@@ -5,7 +5,7 @@ metadata:
   name: prowlarr
   namespace: argocd
   annotations:
-    link.argocd.argoproj.io/external-link: "https://prowlarr.argocd-k3s-test.panzer1119.de"
+    link.argocd.argoproj.io/external-link: "https://prowlarr.argocd-mbp-test.panzer1119.de"
 spec:
   project: default
   source:
@@ -20,7 +20,7 @@ spec:
           annotations:
             traefik.ingress.kubernetes.io/router.middlewares: traefik-local-only@kubernetescrd
           hosts:
-            - host: prowlarr.argocd-k3s-test.panzer1119.de
+            - host: prowlarr.argocd-mbp-test.panzer1119.de
               paths:
                 - path: /
                   pathType: ImplementationSpecific

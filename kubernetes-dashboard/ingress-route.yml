@@ -5,13 +5,13 @@ metadata:
   name: kubernetes-dashboard
   namespace: kubernetes-dashboard
   annotations:
-    link.argocd.argoproj.io/external-link: "https://kubernetes-dashboard.argocd-k3s-test.panzer1119.de"
+    link.argocd.argoproj.io/external-link: "https://kubernetes-dashboard.argocd-mbp-test.panzer1119.de"
 spec:
   entryPoints:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`kubernetes-dashboard.argocd-k3s-test.panzer1119.de`)
+      match: Host(`kubernetes-dashboard.argocd-mbp-test.panzer1119.de`)
       middlewares:
         - name: redirect-to-https
           namespace: traefik

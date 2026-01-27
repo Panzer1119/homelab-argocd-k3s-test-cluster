@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`whoami.argocd-k3s-test.panzer1119.de`)
+      match: Host(`whoami.argocd-mbp-test.panzer1119.de`)
       middlewares:
         - name: redirect-to-https
           namespace: traefik

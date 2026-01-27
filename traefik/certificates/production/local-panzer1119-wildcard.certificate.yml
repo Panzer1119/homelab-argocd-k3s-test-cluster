@@ -14,6 +14,6 @@ spec:
     - "local.panzer1119.eu"
     - "*.local.panzer1119.de"
     - "*.local.panzer1119.eu"
-    - "*.argocd-k3s-test.local.panzer1119.de"
+    - "*.argocd-mbp-test.local.panzer1119.de"
     - "*.argocd-k3s-test.local.panzer1119.eu"
 ...

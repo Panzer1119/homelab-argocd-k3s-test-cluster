@@ -5,7 +5,7 @@ metadata:
   name: victoria-metrics-k8s-stack
   namespace: argocd
   annotations:
-    link.argocd.argoproj.io/external-link: "https://victoria-metrics.argocd-k3s-test.panzer1119.de"
+    link.argocd.argoproj.io/external-link: "https://victoria-metrics.argocd-mbp-test.panzer1119.de"
 spec:
   project: default
   source:
@@ -18,7 +18,7 @@ spec:
           ingress:
             enabled: true
             hosts:
-              - vm-alertmanager.argocd-k3s-test.panzer1119.de
+              - vm-alertmanager.argocd-mbp-test.panzer1119.de
             ingressClassName: traefik
             annotations:
               traefik.ingress.kubernetes.io/router.middlewares: traefik-local-only@kubernetescrd,traefik-authelia@kubernetescrd
@@ -29,7 +29,7 @@ spec:
           ingress:
             enabled: true
             hosts:
-              - vm-grafana.argocd-k3s-test.panzer1119.de
+              - vm-grafana.argocd-mbp-test.panzer1119.de
             ingressClassName: traefik
             annotations:
               traefik.ingress.kubernetes.io/router.middlewares: traefik-local-only@kubernetescrd,traefik-authelia@kubernetescrd
@@ -39,7 +39,7 @@ spec:
           ingress:
             enabled: true
             hosts:
-              - vm-agent.argocd-k3s-test.panzer1119.de
+              - vm-agent.argocd-mbp-test.panzer1119.de
             ingressClassName: traefik
             annotations:
               traefik.ingress.kubernetes.io/router.middlewares: traefik-local-only@kubernetescrd,traefik-authelia@kubernetescrd
@@ -65,7 +65,7 @@ spec:
           ingress:
             enabled: true
             hosts:
-              - vm-alert.argocd-k3s-test.panzer1119.de
+              - vm-alert.argocd-mbp-test.panzer1119.de
             ingressClassName: traefik
             annotations:
               traefik.ingress.kubernetes.io/router.middlewares: traefik-local-only@kubernetescrd,traefik-authelia@kubernetescrd
@@ -73,7 +73,7 @@ spec:
           ingress:
             enabled: true
             hosts:
-              - victoria-metrics.argocd-k3s-test.panzer1119.de
+              - victoria-metrics.argocd-mbp-test.panzer1119.de
             ingressClassName: traefik
             annotations:
               traefik.ingress.kubernetes.io/router.middlewares: traefik-local-only@kubernetescrd,traefik-authelia@kubernetescrd
