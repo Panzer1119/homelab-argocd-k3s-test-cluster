@@ -5,7 +5,7 @@ metadata:
   name: kubernetes-dashboard
   namespace: argocd
   annotations:
-    link.argocd.argoproj.io/external-link: "https://kubernetes-dashboard.argocd-k3s-test.local.panzer1119.de"
+    link.argocd.argoproj.io/external-link: "https://kubernetes-dashboard.argocd-k3s-test.panzer1119.de"
 spec:
   project: default
   source:
