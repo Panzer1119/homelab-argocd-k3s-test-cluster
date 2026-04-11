@@ -5,7 +5,7 @@ metadata:
   name: traefik
   namespace: argocd
   annotations:
-    link.argocd.argoproj.io/external-link: "https://traefik-dashboard.argocd-k3s-test.local.panzer1119.de"
+    link.argocd.argoproj.io/external-link: "https://traefik-dashboard.argocd-k3s-test.panzer1119.de"
 spec:
   project: default
   source:
@@ -24,18 +24,22 @@ spec:
           dashboard:
             enabled: true
             entryPoints: [ web, websecure ]
-            matchRule: Host(`traefik-dashboard.argocd-k3s-test.local.panzer1119.de`) && (Path(`/`) || PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+            matchRule: Host(`traefik-dashboard.argocd-k3s-test.panzer1119.de`) && (Path(`/`) || PathPrefix(`/api`) || PathPrefix(`/dashboard`))
             middlewares:
               - name: redirect-to-https
+                namespace: traefik
+              - name: local-only
                 namespace: traefik
               - name: authelia
                 namespace: traefik
           healthcheck:
             enabled: true
             entryPoints: [ web, websecure ]
-            matchRule: Host(`traefik-status.argocd-k3s-test.local.panzer1119.de`)
+            matchRule: Host(`traefik-status.argocd-k3s-test.panzer1119.de`)
             middlewares:
               - name: redirect-to-https
+                namespace: traefik
+              - name: local-only
                 namespace: traefik
         global:
           checkNewVersion: true
