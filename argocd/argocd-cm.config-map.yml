@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/part-of: argocd
 data:
-  url: "https://argocd.argocd-k3s-test.local.panzer1119.de"
+  url: "https://argocd.argocd-k3s-test.panzer1119.de"
   accounts.panzer1119: "apiKey, login"
   accounts.panzer1119.enabled: "true"
   # Pre-existing settings
