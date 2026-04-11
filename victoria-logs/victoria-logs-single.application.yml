@@ -5,7 +5,7 @@ metadata:
   name: victoria-logs-single
   namespace: argocd
   annotations:
-    link.argocd.argoproj.io/external-link: "https://vm-logs.argocd-k3s-test.local.panzer1119.de"
+    link.argocd.argoproj.io/external-link: "https://vm-logs.argocd-k3s-test.panzer1119.de"
 spec:
   project: default
   source:
@@ -22,13 +22,13 @@ spec:
           ingress:
             enabled: true
             hosts:
-              - name: vm-logs.argocd-k3s-test.local.panzer1119.de
+              - name: vm-logs.argocd-k3s-test.panzer1119.de
                 path:
                   - /
                 port: http
             ingressClassName: traefik
             annotations:
-              traefik.ingress.kubernetes.io/router.middlewares: traefik-authelia@kubernetescrd
+              traefik.ingress.kubernetes.io/router.middlewares: traefik-authelia@kubernetescrd,traefik-local-only@kubernetescrd
   destination:
     server: "https://kubernetes.default.svc"
     namespace: victoria-logs
