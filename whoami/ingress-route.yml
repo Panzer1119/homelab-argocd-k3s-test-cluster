@@ -8,8 +8,13 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`whoami.argocd-k3s-test.local.panzer1119.de`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`whoami.argocd-k3s-test.panzer1119.de`)
+      middlewares:
+        - name: redirect-to-https
+          namespace: traefik
+        - name: local-only
+          namespace: traefik
       services:
         - name: whoami
           port: 80
