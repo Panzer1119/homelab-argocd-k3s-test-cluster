@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://victoriametrics.github.io/helm-charts/
     chart: victoria-logs-collector
-    targetRevision: 0.2.16
+    targetRevision: 0.3.3
     helm:
       valuesObject:
         remoteWrite:
