@@ -62,8 +62,9 @@ spec:
               tracing: false
           websecure:
             asDefault: true
-            tls:
-              enabled: true
+            http:
+              tls:
+                enabled: true
         providers:
           kubernetesCRD:
             enabled: true
