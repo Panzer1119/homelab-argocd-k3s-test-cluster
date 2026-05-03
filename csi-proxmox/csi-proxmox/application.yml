@@ -7,13 +7,33 @@ metadata:
 spec:
   project: default
   source:
-    chart: proxmox-csi-plugin
-    repoURL: ghcr.io/panzer1119/charts
-    targetRevision: 0.25.6
+    #chart: proxmox-csi-plugin
+    #repoURL: ghcr.io/panzer1119/charts
+    #targetRevision: 0.25.6
+    repoURL: https://github.com/Panzer1119/proxmox-csi-plugin.git
+    targetRevision: codex/add-real-time-web-visualization-dashboard
+    path: charts/proxmox-csi-plugin
     helm:
       valuesObject:
         replicaCount: 1
         existingConfigSecret: proxmox-csi-config
+        controller:
+          plugin:
+            image:
+              repository: ghcr.io/panzer1119/proxmox-csi-controller
+              pullPolicy: Always
+              tag: pr-2
+        node:
+          plugin:
+            image:
+              repository: ghcr.io/panzer1119/proxmox-csi-node
+              pullPolicy: Always
+              tag: pr-2
+        dashboard:
+          enabled: true
+          #address: ":8088"
+          #refreshInterval: 15s
+          #port: 8088
         metrics:
           enabled: true
   destination:
