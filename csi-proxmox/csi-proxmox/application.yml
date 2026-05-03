@@ -22,13 +22,13 @@ spec:
             image:
               repository: ghcr.io/panzer1119/proxmox-csi-controller
               pullPolicy: Always
-              tag: pr-2
+              tag: sha-cde82feb5b724f739ba2701684042ce0ddb5d25a
         node:
           plugin:
             image:
               repository: ghcr.io/panzer1119/proxmox-csi-node
               pullPolicy: Always
-              tag: pr-2
+              tag: sha-cde82feb5b724f739ba2701684042ce0ddb5d25a
         dashboard:
           enabled: true
           #address: ":8088"
