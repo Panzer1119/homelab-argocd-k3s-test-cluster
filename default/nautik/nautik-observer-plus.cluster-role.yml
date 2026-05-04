@@ -5,38 +5,44 @@ metadata:
   name: nautik-observer-plus
 rules:
   # Core read-only access
-  - apiGroups: [""]
+  - apiGroups:
+      - ""
+      - apps
+      - autoscaling
+      - batch
+      - extensions
+      - networking.k8s.io
+      - policy
+      - rbac.authorization.k8s.io
     resources:
-      - pods
-      - services
-      - endpoints
+      - componentstatuses
       - configmaps
-      - events
-      - namespaces
-      - nodes
-      - persistentvolumeclaims
-      - persistentvolumes
-    verbs: ["get", "list", "watch"]
-
-  - apiGroups: ["apps"]
-    resources:
-      - deployments
-      - daemonsets
-      - statefulsets
-      - replicasets
-    verbs: ["get", "list", "watch"]
-
-  - apiGroups: ["batch"]
-    resources:
-      - jobs
       - cronjobs
-    verbs: ["get", "list", "watch"]
-
-  - apiGroups: ["networking.k8s.io"]
-    resources:
-      - ingresses
+      - daemonsets
+      - deployments
+      - events
+      - endpoints
+      - horizontalpodautoscalers
+      - ingress
+      - jobs
+      - limitranges
+      - namespaces
       - networkpolicies
-    verbs: ["get", "list", "watch"]
+      - nodes
+      - pods
+      - pods/log
+      - persistentvolumes
+      - persistentvolumeclaims
+      - resourcequotas
+      - replicasets
+      - replicationcontrollers
+      - serviceaccounts
+      - services
+      - statefulsets
+    verbs:
+      - get
+      - list
+      - watch
 
   # Exec into containers
   - apiGroups: [""]
@@ -48,6 +54,6 @@ rules:
   - apiGroups: [""]
     resources:
       - pods/portforward
-    verbs: ["create"]
+    verbs: ["create"] 
 ...
  
