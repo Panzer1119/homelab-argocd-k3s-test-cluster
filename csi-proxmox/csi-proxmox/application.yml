@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: proxmox-csi-plugin
   namespace: argocd
+  annotations:
+    link.argocd.argoproj.io/external-link: "https://proxmox-csi-plugin-dashboard.argocd-k3s-test.panzer1119.de"
 spec:
   project: default
   source:
@@ -34,6 +36,16 @@ spec:
           #address: ":8088"
           #refreshInterval: 15s
           #port: 8088
+          ingress:
+            enabled: true
+            className: traefik
+            annotations:
+              traefik.ingress.kubernetes.io/router.middlewares: traefik-redirect-to-https@kubernetescrd,traefik-local-only@kubernetescrd
+            hosts:
+              - host: proxmox-csi-plugin-dashboard.argocd-k3s-test.panzer1119.de
+                paths:
+                  - path: /
+                    pathType: ImplementationSpecific
         metrics:
           enabled: true
   destination:
