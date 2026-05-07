@@ -7,7 +7,7 @@ metadata:
   annotations:
     csi.proxmox.sinextra.dev/lifecycle: "retain"
 spec:
-  storageClassName: proxmox-data-xfs
+  storageClassName: proxmox-ultra-fast-zfs
   accessModes:
     - ReadWriteOnce
   resources:
