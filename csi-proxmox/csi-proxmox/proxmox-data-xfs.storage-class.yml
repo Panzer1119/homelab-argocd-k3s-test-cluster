@@ -12,8 +12,9 @@ volumeBindingMode: WaitForFirstConsumer
 parameters:
   csi.storage.k8s.io/fstype: "xfs"
   storage: "ultra-fast-zfs"
-  cache: "none"
   ssd: "true"
+  aio: "io_uring"
+  cache: "none"
   backup: "false"
   replicate: "false"
   vmid: "30002"
