@@ -24,28 +24,28 @@ spec:
             image:
               repository: ghcr.io/panzer1119/proxmox-csi-controller
               pullPolicy: Always
-              tag: sha-d8543984fbe27992b4d9b6341e2d0f3fffd511fe
+              tag: sha-f50538bb2d58419fea1cef8830e3a8617abae205
         node:
           plugin:
             image:
               repository: ghcr.io/panzer1119/proxmox-csi-node
               pullPolicy: Always
-              tag: sha-d8543984fbe27992b4d9b6341e2d0f3fffd511fe
-        dashboard:
-          enabled: true
-          #address: ":8088"
-          #refreshInterval: 15s
-          #port: 8088
-          ingress:
-            enabled: true
-            className: traefik
-            annotations:
-              traefik.ingress.kubernetes.io/router.middlewares: traefik-redirect-to-https@kubernetescrd,traefik-local-only@kubernetescrd
-            hosts:
-              - host: proxmox-csi-plugin-dashboard.argocd-k3s-test.panzer1119.de
-                paths:
-                  - path: /
-                    pathType: ImplementationSpecific
+              tag: sha-f50538bb2d58419fea1cef8830e3a8617abae205
+#        dashboard:
+#          enabled: true
+#          #address: ":8088"
+#          #refreshInterval: 15s
+#          #port: 8088
+#          ingress:
+#            enabled: true
+#            className: traefik
+#            annotations:
+#              traefik.ingress.kubernetes.io/router.middlewares: traefik-redirect-to-https@kubernetescrd,traefik-local-only@kubernetescrd
+#            hosts:
+#              - host: proxmox-csi-plugin-dashboard.argocd-k3s-test.panzer1119.de
+#                paths:
+#                  - path: /
+#                    pathType: ImplementationSpecific
         metrics:
           enabled: true
   destination:

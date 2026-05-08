@@ -17,7 +17,12 @@ parameters:
   cache: "none"
   backup: "false"
   replicate: "false"
-  vmid: "30002"
+  vmID: "30002"
+  volumeNameNamespaceUUID: "caf1d440-a6a8-4574-9865-3b6d426b80ce"
+#  volumeNameTemplate: 'vol-{{ .VolumeNameUUID }}' # Use this for production
+#  volumeNameTemplate: 'ns-{{ .PVCNamespace }}-pvc-{{ .PVCName }}' # Use this for testing
+  volumeNameTemplate: 'vol-{{ .VolumeNameUUID }}-ns-{{ .PVCNamespace }}-pvc-{{ .PVCName }}' # Use this for development
+#  volumeNameTemplate: 'vol-{{ .VolumeNameUUID }}-ns-{{ .PVCNamespace }}' # Use this for development
 mountOptions:
   - noatime
 ...
