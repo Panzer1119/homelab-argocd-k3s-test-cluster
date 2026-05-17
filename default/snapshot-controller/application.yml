@@ -1,0 +1,35 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: snapshot-controller
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: snapshot-controller
+    repoURL: https://piraeus.io/helm-charts
+    targetRevision: 5.0.4
+    helm:
+      valuesObject:
+        volumeSnapshotClasses:
+          - name: proxmox
+            annotations:
+              snapshot.storage.kubernetes.io/is-default-class: "true"
+            driver: csi.proxmox.sinextra.dev
+            deletionPolicy: Retain
+        volumeGroupSnapshotClasses:
+          - name: proxmox
+            annotations:
+              groupsnapshot.storage.kubernetes.io/is-default-class: "true"
+            driver: csi.proxmox.sinextra.dev
+            deletionPolicy: Retain
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      enabled: false
+      prune: true
+      selfHeal: true
+...
