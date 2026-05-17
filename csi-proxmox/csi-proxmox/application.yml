@@ -25,6 +25,8 @@ spec:
               repository: ghcr.io/panzer1119/proxmox-csi-controller
               pullPolicy: Always
               tag: sha-f50538bb2d58419fea1cef8830e3a8617abae205
+          snapshotter:
+            enabled: true
         node:
           plugin:
             image:
