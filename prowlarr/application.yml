@@ -11,7 +11,7 @@ spec:
   source:
     chart: prowlarr
     repoURL: https://panzer1119.github.io/helm-charts
-    targetRevision: 0.4.17
+    targetRevision: 0.4.18
     helm:
       valuesObject:
         ingress:
