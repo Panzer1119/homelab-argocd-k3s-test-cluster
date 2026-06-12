@@ -56,6 +56,10 @@ spec:
           - crd
           - ingress
           - traefik-proxy
+        txtOwnerId: test
+        txtPrefix: k3s.test.%{record_type}-
+        domainFilters:
+          - argocd-k3s-test.panzer1119.de
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: external-dns
