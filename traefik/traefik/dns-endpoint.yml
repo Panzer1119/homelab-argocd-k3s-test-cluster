@@ -1,0 +1,11 @@
+---
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: traefik
+spec:
+  endpoints:
+    - dnsName: traefik.argocd-k3s-test.panzer1119.de
+      recordTTL: 300
+      recordType: CNAME
+...
