@@ -32,6 +32,8 @@ spec:
                 namespace: traefik
               - name: authelia
                 namespace: traefik
+            annotations:
+              external-dns.alpha.kubernetes.io/target: "traefik.argocd-k3s-test.panzer1119.de"
           healthcheck:
             enabled: true
             entryPoints: [ web, websecure ]
@@ -41,6 +43,8 @@ spec:
                 namespace: traefik
               - name: local-only
                 namespace: traefik
+            annotations:
+              external-dns.alpha.kubernetes.io/target: "traefik.argocd-k3s-test.panzer1119.de"
         global:
           checkNewVersion: true
           sendAnonymousUsage: false
