@@ -52,6 +52,10 @@ spec:
                 value: debug
               - name: DRY_RUN
                 value: "false"
+        sources:
+          - crd
+          - ingress
+          - traefik-proxy
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: external-dns
